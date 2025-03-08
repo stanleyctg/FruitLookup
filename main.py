@@ -22,7 +22,7 @@ class FruitLookup:
             print(f"Error fetching data {e}")
         return None
 
-    def get_fruit(self):
+    def get_fruit_detail(self):
         '''Fetch fruit data from API'''
         try:
             response = requests.get(f'{API_URL}/{self.fruit_name.lower()}')
@@ -60,7 +60,7 @@ class FruitLookup:
 
     def run(self):
         '''Method to fetch and display fruit data'''
-        fruit_data = self.get_fruit()
+        fruit_data = self.get_fruit_detail()
         if fruit_data is None:
             print(f"Fruit '{self.fruit_name}' not found")
             return

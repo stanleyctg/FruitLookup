@@ -8,11 +8,11 @@ if fruits is None:
     raise Exception("Failed to fetch fruits from the API for test parameterization.")
 
 @pytest.mark.parametrize("fruit", fruits)
-def test_fetch_fruit(fruit):
+def test_get_fruit_detail(fruit):
     '''Test fetching fruit data from the API against the full list'''
     fruit_name = fruit.get('name')
     fruit_lookup = FruitLookup(fruit_name)
-    fruit_data = fruit_lookup.get_fruit()
+    fruit_data = fruit_lookup.get_fruit_detail()
     assert fruit_data == fruit, f"Failed for {fruit_name}"
 
 @pytest.mark.parametrize("fruit", fruits)
@@ -66,3 +66,4 @@ def test_machine_readable_output(capsys, fruit):
     assert output_json["Family"] == expected_family, f"Expected family {expected_family}"
     assert output_json["Sugar"] == expected_sugar, f"Expected sugar {expected_sugar}"
     assert output_json["Carbohydrates"] == expected_carbs, f"Expected carbohydrates {expected_carbs}"
+
