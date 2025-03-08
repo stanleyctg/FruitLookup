@@ -10,12 +10,31 @@ class FruitLookup:
         self.fruit_name = fruit_name
         self.output_format = output_format
 
+    @staticmethod
+    def fetch_all_fruits():
+        '''Fetch all fruits from API'''
+        try:
+            all_url = f'{API_URL}/all'
+            response = requests.get(all_url, timeout=5)
+            if response.status_code == 200:
+                return response.json()
+        except Exception as e:
+            print(f"Error fetching data {e}")
+        return None
+
     def get_fruit(self):
         '''Fetch fruit data from API'''
         try:
             response = requests.get(f'{API_URL}/{self.fruit_name.lower()}')
             if response.status_code == 200:
-                return response.json()
+                fruit_data = response.json()
+                if fruit_data:
+                    return fruit_data
+            # If direct lookup fails, try the fallback using the full list
+            all_fruits = self.fetch_all_fruits()
+            for fruit in all_fruits:
+                if fruit.get('name', '').lower() == self.fruit_name.lower():
+                    return fruit
         except Exception as e:
             print(f"Error fetching data {e}")
         return None
