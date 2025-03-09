@@ -25,7 +25,7 @@ class FruitLookup:
     def get_fruit_detail(self):
         '''Fetch fruit data from API'''
         try:
-            response = requests.get(f'{API_URL}/{self.fruit_name.lower()}')
+            response = requests.get(f'{API_URL}/{self.fruit_name.lower()}', timeout=5)
             if response.status_code == 200:
                 fruit_data = response.json()
                 if fruit_data:
@@ -90,3 +90,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     lookup = FruitLookup(args.Fruit, args.format)
     lookup.run()
+    
