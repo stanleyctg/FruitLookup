@@ -6,6 +6,10 @@ Program that allow user to search information about a specific fruit.
 
      In 'main.py' file, it consists the implementation that adheres to the specifications and requirements. In the 'test_main.py' file consists the implmentation of test cases for functions in main.
 
+## Dependancies:
+
+    Install requests and pytest to run both application and test file.
+
 ## Usage:
 
 ### Command Line:

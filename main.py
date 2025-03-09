@@ -32,9 +32,10 @@ class FruitLookup:
                     return fruit_data
             # If direct lookup fails, try the fallback using the full list
             all_fruits = self.fetch_all_fruits()
-            for fruit in all_fruits:
-                if fruit.get('name', '').lower() == self.fruit_name.lower():
-                    return fruit
+            if all_fruits:
+                for fruit in all_fruits:
+                    if fruit.get('name', '').lower() == self.fruit_name.lower():
+                        return fruit
         except Exception as e:
             print(f"Error fetching data {e}")
         return None
