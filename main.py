@@ -42,11 +42,13 @@ class FruitLookup:
 
     def human_readable_output(self, fruit_data):
         '''Print human-readable output'''
+        print("\n")
         print(f"Full Name: {fruit_data.get('name')}")
         print(f"ID: {fruit_data.get('id')}")
         print(f"Family: {fruit_data.get('family')}")
         print(f"Sugar: {fruit_data.get('nutritions').get('sugar')}g")
         print(f"Carbohydrates: {fruit_data.get('nutritions').get('carbohydrates')}g")
+        print("\n")
 
     def machine_readable_output(self, fruit_data):
         '''Print machine-readable output'''
@@ -57,7 +59,9 @@ class FruitLookup:
             "Sugar": fruit_data.get("nutritions").get("sugar"),
             "Carbohydrates": fruit_data.get("nutritions").get("carbohydrates"),
         }
+        print("\n")
         print(json.dumps(output, indent=4))
+        print("\n")
 
     def run(self):
         '''Method to fetch and display fruit data'''
